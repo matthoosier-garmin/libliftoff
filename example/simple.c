@@ -128,8 +128,8 @@ int main(int argc, char *argv[])
 	}
 
 	req = drmModeAtomicAlloc();
-	if (!liftoff_display_apply(display, req)) {
-		perror("liftoff_display_commit");
+	if (!liftoff_output_apply(output, req)) {
+		perror("liftoff_output_commit");
 		return 1;
 	}
 

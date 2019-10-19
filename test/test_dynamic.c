@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
 	liftoff_mock_plane_add_compatible_layer(mock_plane, layer);
 
 	req = drmModeAtomicAlloc();
-	ok = liftoff_display_apply(display, req);
+	ok = liftoff_output_apply(output, req);
 	assert(ok);
 	assert(liftoff_mock_plane_get_layer(mock_plane, req) == layer);
 	drmModeAtomicFree(req);
@@ -91,7 +91,7 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
-	ok = liftoff_display_apply(display, req);
+	ok = liftoff_output_apply(output, req);
 	assert(ok);
 	assert(liftoff_mock_plane_get_layer(mock_plane, req) == layer);
 	if (want_reuse_prev_alloc) {

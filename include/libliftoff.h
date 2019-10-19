@@ -22,8 +22,7 @@ void liftoff_display_destroy(struct liftoff_display *display);
  * Callers are expected to commit `req` afterwards and can read the layer to
  * plane mapping with `liftoff_layer_get_plane_id`.
  */
-bool liftoff_display_apply(struct liftoff_display *display,
-			   drmModeAtomicReq *req);
+bool liftoff_output_apply(struct liftoff_output *output, drmModeAtomicReq *req);
 
 /**
  * Make the display manage a CRTC's planes. The returned output allows callers

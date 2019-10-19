@@ -29,6 +29,7 @@ struct example_layer {
 
 static int drm_fd = -1;
 static struct liftoff_display *display = NULL;
+static struct liftoff_output *output = NULL;
 static struct example_layer layers[LAYERS_LEN] = {0};
 static size_t active_layer_idx = 2;
 
@@ -107,8 +108,8 @@ static bool draw(void)
 	draw_layer(drm_fd, active_layer);
 
 	req = drmModeAtomicAlloc();
-	if (!liftoff_display_apply(display, req)) {
-		perror("liftoff_display_commit");
+	if (!liftoff_output_apply(output, req)) {
+		perror("liftoff_output_commit");
 		return false;
 	}
 
@@ -140,7 +141,6 @@ int main(int argc, char *argv[])
 	drmModeRes *drm_res;
 	drmModeCrtc *crtc;
 	drmModeConnector *connector;
-	struct liftoff_output *output;
 	size_t i;
 	int ret;
 
